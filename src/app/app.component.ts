@@ -9,6 +9,7 @@ import { ItemComponent } from './components/item.component';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { of } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
+import { ExampleComponent } from './components/example.component';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +23,14 @@ import { RouterOutlet } from '@angular/router';
     FooComponent,
     ViewportLazyComponent,
     ItemComponent,
+    ExampleComponent,
     AsyncPipe,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  
   index = 0;
   show = true;
   obs$ = of('hello');

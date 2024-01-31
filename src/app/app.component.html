@@ -3,10 +3,12 @@
     <mat-card-title>&#64;if</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <!-- before -->
     <div *ngIf="show; else anonymousUser">I'm here</div>
     <ng-template #anonymousUser>
       I'm there
     </ng-template>
+    <!-- after -->
     @if(show) {
     <div>I'm here</div>
     } @else {
@@ -23,12 +25,16 @@
   </mat-card-header>
   <mat-card-content>
     <ul>
-      @defer(on immediate) {
+      <!-- before -->
+      <ng-container *ngFor="let item of items;">
+        <item [id]="item.id"></item>
+      </ng-container>
+      <!-- after -->
       @for (item of items; track item.id) {
       <item [id]="item.id" />
+      } @empty {
+        Empty list of item
       }
-      }
-
     </ul>
   </mat-card-content>
 </mat-card><br><br>
@@ -39,6 +45,16 @@
   </mat-card-header>
   <mat-card-content>
 
+    Item:
+    <!-- before -->
+    
+    <ng-container [ngSwitch]="index">
+      <span *ngSwitchCase="0">{{items[0].label}}</span>
+      <span *ngSwitchCase="1">{{items[1].label}}</span>
+      <span *ngSwitchDefault>Overflow</span>
+    </ng-container>
+    <!-- after -->
+    <br>
     Item:
     @switch (index) {
 
@@ -62,6 +78,18 @@
   </mat-card-header>
   <mat-card-content>
     <h4>On immediate</h4>
+
+    @defer (on viewport) {
+      <example/>
+    } @loading {
+      Loading…
+    } @error {
+      Loading failed :(
+    } @placeholder {
+      <div>this is placeholder</div>
+    }
+
+
     @defer (on immediate) {
     <foo />
     }
@@ -101,7 +129,7 @@
     <br><mat-divider />
     <h3>Placeholder</h3>
     @defer (when false) {
-    <button></button>
+    <button>test</button>
     } @placeholder (minimum 2s) {
     *** PLACEHOLDER **
     }
