@@ -1,6 +1,7 @@
 # refence
 
 https://www.infoq.cn/article/TqCmpDM6KtvjZchqiXZM
+https://blog.angular.io/introducing-angular-v17-4d7033312e4b
 
 
 ## Development server
