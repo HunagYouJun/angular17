@@ -3,6 +3,7 @@
     <mat-card-title>&#64;if</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    upload xlsx<input type="file" (change)="onFileChange($event)" multiple="false" />
     <!-- before -->
     <div *ngIf="show; else anonymousUser">I'm here</div>
     <ng-template #anonymousUser>
